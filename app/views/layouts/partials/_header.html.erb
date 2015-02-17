@@ -1,0 +1,16 @@
+<div class="header">
+	<div class="wrapper">
+		<div class="logo"><%=link_to image_tag('forumname'), '/' %></div>
+		<% if @current_user.present? %>
+			<%= @current_user.login %>
+			<% else %>
+		<div class="signup-login">
+			<ul>					
+				<li class="signup"><%= link_to "Sign up", new_user_path %></li>
+				<li class="login"><%= link_to "Log in", login_path %></li>				
+			</ul>	
+		</div>
+		<% end %>
+		<div class="clear"></div>
+	</div>
+</div>

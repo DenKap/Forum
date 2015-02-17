@@ -4,11 +4,12 @@
   <title>Forum</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Scada:400,400italic,700,700italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%=render 'layouts/partials/header' %>
 <%= yield %>
-
+<%=render 'layouts/partials/footer' %>
 </body>
 </html>
