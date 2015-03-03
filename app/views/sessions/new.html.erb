@@ -1,9 +1,10 @@
-<% provide(:title, "Log in") %>
-<h1>Log in</h1>
+<div class="login-form">
+  <div class="wrapper">
 
-<div class="log_in">
-  <div class="log_in_form">
-    <%= form_tag login_path do %>
+    <% provide(:title, "Log in") %>
+    <h1>Log in</h1>
+
+    <%= form_for(:session, url: login_path) do |f| %>
 
       <p><%= label_tag :email%>
       <%= text_field_tag  :email %></p>
@@ -15,5 +16,6 @@
     <% end %>
 
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+
   </div>
 </div>

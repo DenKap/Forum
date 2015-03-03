@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :login, :email
   validates :email, format: { with: /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/i }
   
-  has_many :topics
-  has_many :posts
+  has_many :topics, dependent: :destroy
+  has_many :posts, dependent: :destroy 
 
 	private
 

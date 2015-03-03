@@ -21,21 +21,17 @@ ActiveRecord::Schema.define(version: 20150217143041) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer  "post_id",     limit: 4
-    t.integer  "user_id",     limit: 4
-    t.string   "title",       limit: 255
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer "user_id",     limit: 4
+    t.integer "topic_id",    limit: 4
+    t.string  "title",       limit: 255
+    t.text    "description", limit: 65535
   end
 
   create_table "topics", force: :cascade do |t|
-    t.integer  "topic_id",    limit: 4
-    t.integer  "user_id",     limit: 4
-    t.string   "title",       limit: 255
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer "user_id",     limit: 4
+    t.integer "category_id", limit: 4
+    t.string  "title",       limit: 255
+    t.text    "description", limit: 65535
   end
 
   create_table "users", force: :cascade do |t|
