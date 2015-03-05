@@ -1,9 +1,30 @@
-		<div class="categories-box">
-			<p class="box-name">Categoties</p>
-			<div class="category"><%=link_to ('cat1'), '#' %></div>
-			<div class="category"><%=link_to ('cat2'), '#' %></div>
-			<div class="category"><%=link_to ('cat3'), '#' %></div>
-			<div class="category"><%=link_to ('cat4'), '#' %></div>
-			<div class="category"><%=link_to ('cat5'), '#' %></div>
-			<div class="category"><%=link_to ('cat6'), '#' %></div>
-		</div>
+<div class="categories-box">
+	<div class="wrapper">
+		<h1 class="box-name">Categories</h1>
+
+		<p class="add"><%=link_to 'Add Category', new_admin_category_path %></p>
+
+	<% if @categories.present? %>
+	  <table class="styled">
+	    <thead>
+	    <tr>
+	      <th>Name</th>
+	      <th>Description</th>
+	    </tr>
+	    </thead>
+	    <tbody>
+	    <% @categories.each do |category| %>
+	      <tr>
+	        <td><%=category.name%></td>
+	        <td><%=category.description%></td>
+	        <td><%=link_to "edit", edit_admin_category_path(category)%> / <%=link_to "delete", admin_category_path(category), method: :delete, data: { confirm: "Do you want to delete #{category.name}?" }%></td>
+	      </tr>
+	    <% end %>
+	    </tbody>
+	  </table>
+	<% else %>
+	  <p>There are no Categories yet</p>
+	<% end %>
+
+	</div>
+</div>

@@ -1,0 +1,8 @@
+<h1>Add New Category</h1>
+
+<div class="add-form">
+  <%=form_for @category, url: admin_categories_path do |f| %>
+    <%= render partial: 'form', locals: { f: f } %>
+    <p class="submit"><%=f.submit 'Add new Category' %></p>
+  <% end %>
+</div>

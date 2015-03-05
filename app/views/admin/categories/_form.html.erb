@@ -1,0 +1,7 @@
+<%= render partial: 'layouts/partials/form_error_messages', locals: { object: @category } %>
+
+<p class="label"><%=f.label :name, "Category Name:" %></p>
+<p><%=f.text_field :name %></p>
+
+<p class="label"><%=f.label :description, "Description:" %></p>
+<p><%=f.text_field :description %></p>
