@@ -73,7 +73,9 @@ img { max-width: 100%; }
 .header .signup-login ul li { list-style: none; display: inline-block; }
 .header .signup-login ul li a { text-decoration: none; }
 .header .signup-login ul li a:hover { color: #FF4900; }
-
+.header .logged-header { display: inline-block; text-align: left; }
+.header .logged-header .who { display: inline-block; }
+.header .logged-header .logout { display: inline-block; }
 /* Footer */
 
 .footer { text-align: center; margin-top: 60px; }
