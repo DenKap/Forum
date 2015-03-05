@@ -7,9 +7,8 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
- 			redirect_to user_path(@user), notice: "#{@user} joined the Forum"
- 			else
- 			flash[:alert] = "There was a problem. Please try again."
+ 			redirect_to user_path(@user), notice: "#{@user.login} joined the Forum"
+ 		else
  			render :new
  		end
 	end
