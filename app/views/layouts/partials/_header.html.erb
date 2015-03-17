@@ -4,6 +4,7 @@
 		<div class="logged-header">
 			<% if @current_user.present? %>
 				<div class="who"><%= @current_user.login %></div>
+				<div class="profile"><%= link_to "Profile", user_path(@current_user) %></div>
 				<div class="logout"><%= link_to "Log Out", logout_path %></div>
 				<% else %>
 		</div>

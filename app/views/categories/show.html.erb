@@ -1,0 +1,39 @@
+<div class="category-box">
+	<div class="wrapper">
+		
+		<h1 class="box-name"><%=@category.name %></h1>
+		<p><%=@category.description %></p>
+
+		<% if @current_user.present? %>
+			<p class="add"><%=link_to 'Add Topic', new_category_topic_path(@category) %></p>
+		<% end %>
+
+		<% if @topics.present? %>
+		  <table class="styled">
+		    <thead>
+		    <tr>
+		    	<th>Author</th>
+		      <th>Name</th>
+		      <th>Description</th>
+		    </tr>
+		    </thead>
+		    <tbody>
+		    <% @topics.each do |topic| %>
+		      <tr>
+		        <td><%=link_to topic.user.login, user_path(topic.user)%></td>
+		        <td><%=link_to topic.title, category_topic_path(@category, topic)%></td>
+		        <td><%=topic.description%></td>
+
+		        <% if @current_user.present? && @current_user.can_edit_topic?(topic) %>
+		        	<td><%=link_to "edit", edit_category_topic_path(@category, topic)%> / <%=link_to "delete", category_topic_path(@category, topic), method: :delete, data: { confirm: "Do you want to delete #{topic.title}?" }%></td>
+		        <% end %>
+		      </tr>
+		    <% end %>
+		    </tbody>
+		  </table>
+		<% else %>
+		  <p>There are no Topics here yet in <%=@category.name%></p>
+		<% end %>
+
+	</div>
+</div>

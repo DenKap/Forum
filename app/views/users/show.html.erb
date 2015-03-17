@@ -1,12 +1,17 @@
 <div class="reg-form">
 	<div class="wrapper">
 
-		<h1>Welcome!</h1>
+		<% if @current_user == @user %>
+			<%=link_to "Edit Profile", edit_user_path(@current_user) %>
+		<% end %>
+			<h2>User info:</h2>
+			<p>First Name: <%=@user.first_name %></p>
+			<p>Last Name: <%=@user.last_name %></p>
+			<p>Country: </p>
+			<p>City: <%=@user.city %></p>
 
-		<h2>User info:</h2>
+			<p>Login: <%=@user.login %></p>
+			<p>Email: <%=@user.email %></p>
 
-		<p>Login: <%=@user.login %></p>
-		<p>Email: <%=@user.email %></p>
-		
 	</div>
 </div>

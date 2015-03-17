@@ -1,0 +1,10 @@
+<%= render partial: 'layouts/partials/form_error_messages', locals: { object: @user } %>
+
+<p class="label"><%=f.label :first_name, "First Name: " %></p>
+<p><%=f.text_field :first_name %></p>
+
+<p class="label"><%=f.label :last_name, "Last Name: " %></p>
+<p><%=f.text_field :last_name %></p>
+
+<p class="label"><%=f.label :city, "City: " %></p>
+<p><%=f.text_field :city %></p>

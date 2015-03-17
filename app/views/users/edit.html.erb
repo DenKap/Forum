@@ -1,0 +1,8 @@
+<h1>Edit Profile</h1>
+
+<div class="add-form">
+  <%=form_for @user, url: user_path(@user) do |f| %>
+    <%= render partial: 'form', locals: { f: f } %>
+    <p class="submit"><%=f.submit 'Update Profile' %></p>
+  <% end %>
+</div>

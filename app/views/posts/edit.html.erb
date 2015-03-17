@@ -1,0 +1,14 @@
+<div class="post-box">
+	<div class="wrapper">
+
+		<h1>Edit <%=@post.title%></h1>
+
+		<div class="add-form">
+		  <%=form_for @post, url: topic_post_path(@topic, @post) do |f| %>
+		    <%= render partial: 'form', locals: { f: f } %>
+		    <p class="submit"><%=f.submit 'Update Post' %></p>
+		  <% end %>
+		</div>
+
+	</div>
+</div>

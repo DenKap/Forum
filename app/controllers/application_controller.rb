@@ -8,5 +8,11 @@ class ApplicationController < ActionController::Base
   def set_current_user
 		@current_user ||= User.find(session[:user_id]) if session[:user_id]
 	end
+
+	def check_logged_in
+		if @current_user.blank?
+    	redirect_to root_path
+    end
+	end
 	
 end

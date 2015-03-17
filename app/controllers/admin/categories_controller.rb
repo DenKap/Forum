@@ -44,8 +44,7 @@ class Admin::CategoriesController < Admin::ApplicationController
 		@category = Category.find(params[:id])
     if @category.blank?
       redirect_to admin_categories_path, alert: "Couldn't find such category"
-    end
-		
+    end		
 	end
 
 	def category_params

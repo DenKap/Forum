@@ -1,0 +1,14 @@
+<div class="topic-box">
+	<div class="wrapper">
+
+		<h1>Edit <%=@topic.title%></h1>
+
+		<div class="add-form">
+		  <%=form_for @topic, url: category_topic_path do |f| %>
+		    <%= render partial: 'form', locals: { f: f } %>
+		    <p class="submit"><%=f.submit 'Update Topic' %></p>
+		  <% end %>
+		</div>
+
+	</div>
+</div>

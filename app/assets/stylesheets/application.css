@@ -67,13 +67,14 @@ img { max-width: 100%; }
     z-index: 0;
     top: 0;
     width: 100%;
+    border-bottom: 1px solid #e5e5e5;
 }
 .header .logo { float: left; margin-top: 20px; }
 .header .signup-login ul { text-align: right; margin-top: 20px; }
 .header .signup-login ul li { list-style: none; display: inline-block; }
 .header .signup-login ul li a { text-decoration: none; }
 .header .signup-login ul li a:hover { color: #FF4900; }
-.header .logged-header { display: inline-block; text-align: left; }
+.header .logged-header { display: inline-block; text-align: left; float: right; }
 .header .logged-header .who { display: inline-block; }
 .header .logged-header .logout { display: inline-block; }
 /* Footer */

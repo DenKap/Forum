@@ -11,13 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304123016) do
+ActiveRecord::Schema.define(version: 20150311093832) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -51,9 +56,13 @@ ActiveRecord::Schema.define(version: 20150304123016) do
   add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
+    t.integer  "country",    limit: 4
     t.string   "login",      limit: 255
     t.string   "email",      limit: 255
     t.string   "password",   limit: 255
+    t.string   "first_name", limit: 255
+    t.string   "last_name",  limit: 255
+    t.string   "city",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

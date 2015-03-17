@@ -1,10 +1,9 @@
 <div class="forum-box">
 	<div class="wrapper">
 
-		<div class="slogan">slogan</div>
+		<div class="slogan"></div>
 
 		<div class="categories-box">
-
       <p class="title">Categories</p>
 
       <div class="categories">
@@ -14,8 +13,8 @@
 	        <% @categories.each do |category| %>
 
 	          <div class="info">
-	            <div class="name"><span><%="#{category.name}"%></span></div>
-	            <div class="description"><span><%="#{category.description}"%></span></div>
+	            <div class="name"><span><%=link_to category.name, category_path(category) %></span></div>
+	            <div class="description"><span><%= category.description %></span></div>
 	          </div>
 
         	<% end %>
@@ -30,23 +29,6 @@
 
 		</div>
 
-		<div class="recent-topics">
-			<p class="box-name">Recently added topics</p>
-			<div class="topic"><%=link_to ('recent topic1'), '#' %></div>
-			<div class="topic"><%=link_to ('recent topic2'), '#' %></div>
-			<div class="topic"><%=link_to ('recent topic3'), '#' %></div>
-			<div class="topic"><%=link_to ('recent topic4'), '#' %></div>
-			<div class="topic"><%=link_to ('recent topic5'), '#' %></div>
-		</div>
-
-		<div class="recent-users">
-			<p class="box-name">Recently joined users</p>
-			<div class="user">recent user1</div>
-			<div class="user">recent user2</div>
-			<div class="user">recent user3</div>
-			<div class="user">recent user4</div>
-			<div class="user">recent user5</div>
-		</div>
 
 	</div>
 </div>
