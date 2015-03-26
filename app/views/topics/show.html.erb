@@ -1,38 +1,39 @@
 <div class="topic-box">
 	<div class="wrapper">
 
-		<h1 class="box-name"><%=@topic.title%></h1>
-		<p><%=@topic.description %></p>
+		<h1 class="move-back"><%=link_to @category.name, category_path(@category) %></h1>
+		<h1 class="box-name"><%=@topic.title %></h1>
+		<p class="topic-discribe"><%=@topic.description %></p>
 
 		<% if @posts.present? %>
-		  <table class="styled">
-		    <thead>
-		    <tr>
-		    	<th>Author</th>
-		      <th>Name</th>
-		      <th>Description</th>
-		    </tr>
-		    </thead>
-		    <tbody>
-		    <% @posts.each do |post| %>
+		  <% @posts.each do |post| %>
+
 		    	<% unless post.new_record? %>
-			      <tr>
-			        <td><%=link_to post.user.login, user_path(post.user)%></td>
-			        <td><%=post.title%></td>
-			        <td><%=post.description%></td>
-			        <td><%=link_to "edit", edit_topic_post_path(@topic, post)%> / <%=link_to "delete", topic_post_path(@topic, post), method: :delete, data: { confirm: "Do you want to delete #{post.title}?" }%></td>
-			      </tr>
+			      <ul>
+			        <li class="username"><%=link_to post.user.login, user_path(post.user) %></li>
+			        <li class="content"><%=post.description %></li>
+			        <li class="add-date"><%=post.created_at.strftime("%d %b %y at %I:%M%p") %></li>
+			        <% if @current_user.present? && @current_user.can_edit_topic?(post)%>
+			        	<li><%=link_to "edit", edit_topic_post_path(@topic, post)%> / <%=link_to "delete", topic_post_path(@topic, post), method: :delete, data: { confirm: "Do you want to delete your post?" }%></li>
+			        <% end %>
+			      </ul>
 		      <% end %>
-		    <% end %>
-		    </tbody>
-		  </table>
+			<% end %>
 		<% else %>
 		  <p>There are no Posts here yet in <%=@topic.title%></p>
 		<% end %>
 
-		<%=form_for @post, url: topic_posts_path(@topic) do |f| %>
-			<%= render partial: 'posts/form', locals: { f: f } %>
-			<p class="submit"><%=f.submit 'Add new Post' %></p>			
+		<span class="pagination"><%= will_paginate @posts %></span>
+
+			<% if @current_user.present? %>
+				<div class="post-form">
+					<h1>Add New Post</h1>
+					<%=form_for @post, url: topic_posts_path(@topic) do |f| %>
+						<%= render partial: 'posts/form', locals: { f: f } %>
+					<p class="submit"><%=f.submit 'Add new Post' %></p>
+				</div>
+			<% end %>
+			
 		<% end %>
 
 	</div>

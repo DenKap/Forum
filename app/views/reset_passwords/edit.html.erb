@@ -1,0 +1,12 @@
+<div class="edit-form">
+	<div class="wrapper">
+
+		<h1><%=@user.login %>, Reset your Password</h1>
+
+			<%= form_tag(reset_password_path(@user.reset_password_token), method: :patch) %>
+			<p>New Password</p>
+			<p><%=password_field_tag :password %></p>
+			<p><%=submit_tag "Update Password" %></p>
+
+	</div>
+</div>

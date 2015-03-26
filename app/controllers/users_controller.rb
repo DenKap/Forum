@@ -17,6 +17,8 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		@last_posts = @user.posts.last(5)
+		@last_topics = @user.topics.last(5)
 	end
 
 	def edit		
@@ -28,6 +30,22 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+	end
+
+	def change_password
+	end
+
+	def update_password
+		if @current_user.password == Digest::SHA1.hexdigest(params[:current_password])
+			@current_user.new_password = params[:new_password]
+			if @current_user.save
+				redirect_to user_path(@current_user), notice: "Password has been changed successfully"
+			else
+				redirect_to user_path(@current_user), alert: "Password should be at least 8 characters"
+			end
+		else
+			redirect_to user_path(@current_user), alert: "Wrong current password"
+		end
 	end
 
 	private

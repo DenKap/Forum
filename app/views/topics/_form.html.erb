@@ -1,13 +1,7 @@
-<div class="topic-box">
-	<div class="wrapper">
+<%= render partial: 'layouts/partials/form_error_messages', locals: { object: @topic } %>
 
-		<%= render partial: 'layouts/partials/form_error_messages', locals: { object: @topic } %>
+<p class="label"><%=f.label :title, "Topic Title:" %></p>
+<p><%=f.text_field :title %></p>
 
-		<p class="label"><%=f.label :title, "Topic Title:" %></p>
-		<p><%=f.text_field :title %></p>
-
-		<p class="label"><%=f.label :description, "Description:" %></p>
-		<p><%=f.text_field :description %></p>
-
-	</div>
-</div>
+<p class="label"><%=f.label :description, "Description:" %></p>
+<p class="description"><%=f.text_area :description %></p>

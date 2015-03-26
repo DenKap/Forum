@@ -1,8 +1,10 @@
-<h1>Edit <%=@category.name%></h1>
+<div class="edit-form">
+	<h1>Edit <%=@category.name%></h1>
 
-<div class="add-form">
-  <%=form_for @category, url: admin_category_path(@category) do |f| %>
-    <%= render partial: 'form', locals: { f: f } %>
-    <p class="submit"><%=f.submit 'Update Category' %></p>
-  <% end %>
+	<div class="add-form">
+	  <%=form_for @category, url: admin_category_path(@category) do |f| %>
+	    <%= render partial: 'form', locals: { f: f } %>
+	    <p class="submit"><%=f.submit 'Update Category' %></p>
+	  <% end %>
+	</div>
 </div>

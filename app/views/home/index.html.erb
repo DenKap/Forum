@@ -1,7 +1,8 @@
 <div class="forum-box">
-	<div class="wrapper">
 
-		<div class="slogan"></div>
+	<div class="slogan">Our Favourite Forum</div>
+
+	<div class="wrapper">		
 
 		<div class="categories-box">
       <p class="title">Categories</p>
@@ -11,24 +12,36 @@
       	<% if @categories.present? %>
 
 	        <% @categories.each do |category| %>
-
 	          <div class="info">
 	            <div class="name"><span><%=link_to category.name, category_path(category) %></span></div>
 	            <div class="description"><span><%= category.description %></span></div>
 	          </div>
-
         	<% end %>
 
 				<% else %>
-
-	  		<p>There are no Categories yet</p>
-
+	  			<p>There are no Categories yet</p>
 				<% end %>
 
+				<p>Hot topics at our Forum: </p>
+
+					<% @last_topics.each do |topic| %>
+			      <ul>		        
+			        <li><%=link_to topic.title, topic.category %></li>
+			        <li><%=topic.description %></li>
+			        <li><%=link_to topic.user.login, user_path(topic.user) %></li>
+			      </ul>
+			    <% end %>
+
+				<p>Last Users joined to our Forum: </p>
+
+					<% @last_users.each do |user| %>
+			      <ul>		        
+			        <li><%=user.login %></li>
+			      </ul>
+			    <% end %>
+
     	</div>
-
 		</div>
-
 
 	</div>
 </div>

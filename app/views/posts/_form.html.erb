@@ -1,13 +1,5 @@
-<div class="post-box">
-	<div class="wrapper">
+<%= render partial: 'layouts/partials/form_error_messages', locals: { object: @post } %>
 
-		<%= render partial: 'layouts/partials/form_error_messages', locals: { object: @post } %>
-
-		<p class="label"><%=f.label :title, "Post Title:" %></p>
-		<p><%=f.text_field :title %></p>
-
-		<p class="label"><%=f.label :description, "Description:" %></p>
-		<p><%=f.text_field :description %></p>
-
-	</div>
-</div>
+<p class="label"><%=f.label :description, "Description:" %></p>
+<p class="description"><%=f.text_area :description %></p>
+	

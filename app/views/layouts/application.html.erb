@@ -9,7 +9,10 @@
 </head>
 <body>
 <%=render 'layouts/partials/header' %>
-<%= yield %>
+<div class="main-container">
+	<%=render 'layouts/partials/flash_messages' %>
+	<%= yield %>
+</div>
 <%=render 'layouts/partials/footer' %>
 </body>
 </html>

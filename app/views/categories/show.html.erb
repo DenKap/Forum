@@ -1,6 +1,7 @@
 <div class="category-box">
 	<div class="wrapper">
 		
+		<h1 class="move-back"><%=link_to 'Categories', root_path %></h1>
 		<h1 class="box-name"><%=@category.name %></h1>
 		<p><%=@category.description %></p>
 
@@ -11,19 +12,20 @@
 		<% if @topics.present? %>
 		  <table class="styled">
 		    <thead>
-		    <tr>
-		    	<th>Author</th>
+		    <tr>		    	
 		      <th>Name</th>
 		      <th>Description</th>
+		      <th>Author</th>
+		      <th>Posts</th>
 		    </tr>
 		    </thead>
 		    <tbody>
 		    <% @topics.each do |topic| %>
-		      <tr>
-		        <td><%=link_to topic.user.login, user_path(topic.user)%></td>
+		      <tr>		        
 		        <td><%=link_to topic.title, category_topic_path(@category, topic)%></td>
 		        <td><%=topic.description%></td>
-
+		        <td><%=link_to topic.user.login, user_path(topic.user)%></td>
+		        <td><%= topic.posts.count %></td>
 		        <% if @current_user.present? && @current_user.can_edit_topic?(topic) %>
 		        	<td><%=link_to "edit", edit_category_topic_path(@category, topic)%> / <%=link_to "delete", category_topic_path(@category, topic), method: :delete, data: { confirm: "Do you want to delete #{topic.title}?" }%></td>
 		        <% end %>
@@ -31,9 +33,12 @@
 		    <% end %>
 		    </tbody>
 		  </table>
+		  
 		<% else %>
 		  <p>There are no Topics here yet in <%=@category.name%></p>
 		<% end %>
+
+		<span class="pagination"><%= will_paginate @topics %></span>
 
 	</div>
 </div>

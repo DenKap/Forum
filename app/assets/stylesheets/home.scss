@@ -1,28 +1,276 @@
-.forum-box {
-	margin-top: 90px;
-	background-color: rgba(255,255,255,0.3);
+.forum-box .wrapper {
+		margin-top: 30px;
 }
-.forum-box .categories-box {
-	display: inline-block;
+.forum-box .slogan {
+		text-align: center;
+		font-size: 2em;
 }
-.forum-box .categories-box .categories {
-	
+
+.forum-box .categories-box .title {
+		text-align: center;
+		text-transform: uppercase;
+		padding: 10px 0;
 }
+.forum-box .categories-box .categories { margin: 10px; }
 .forum-box .categories-box .categories .info {
-	display: inline-block;
+		display: inline-block;
+		padding: 10px 21px;
+		width: 45%;
+		border: 1px solid #c3c3c3;
+		border-radius: 5px;
+}
+.forum-box .categories-box .categories .info .name { text-align: center; padding: 5px 0; }
+.forum-box .categories-box .categories .info .name a {
+		text-decoration: none;
+		font-size: 1.2em;
+		color: #000;
+}
+.forum-box .categories-box .categories .info .name a:hover {
+		text-decoration: underline;
 }
 
-.signup-form {
-	margin-top: 90px;
-	background-color: rgba(255,255,255,0.3);
+/* Forms */
+
+.login-form,
+.signup-form,
+.edit-form,
+.category-form,
+.topic-form,
+.post-form,
+.change-form {
+    background-color: rgba(0,0,0,0.1);
+    margin: 0 auto;
+    color: #000;
+    width: 50%;
+    max-width: 400px;
+    padding: 30px;
+}
+.edit-form,
+.category-form,
+.topic-form,
+.change-form { max-width: 300px; text-align: center; }
+.post-form { max-width: 600px; text-align: center; margin-top: 50px; }
+.login-form h1,
+.signup-form h1,
+.category-form h1,
+.edit-form h1,
+.topic-form h1,
+.post-form h1,
+.change-form h1
+{ 
+		text-align: center;
+		font-size: 2em;
+		text-transform: uppercase;
+		margin-bottom: 15px;
+}
+.login-form p,
+.signup-form p,
+.category-form p,
+.edit-form p,
+.topic-form p,
+.post-form p,
+.change-form p
+{ 
+		margin-bottom: 8px;
+		text-transform: uppercase;
+		font-size: 0.8em;
 }
 
-.reg-form {
-	margin-top: 90px;
-	background-color: rgba(255,255,255,0.3);
+.login-form p a, .signup-form p a { text-decoration: none; color: #FF4900; }
+.login-form p.label, .signup-form p.label { margin-top: 15px; margin-bottom: 5px; }
+.login-form input,
+.signup-form input,
+.edit-form input,
+.category-form input,
+.topic-form input,
+.post-form input,
+.change-form input {
+    width: 91%;
+    border: 1px solid #c3c3c3;
+    border-radius: 3px;
+    padding: 10px;
+}
+.topic-form .description textarea,
+.edit-form .description textarea,
+.post-form .description textarea { height: 200px; width: 96%; }
+.login-form input[type=submit],
+.signup-form input[type=submit],
+.edit-form input[type=submit],
+.category-form input[type=submit],
+.topic-form input[type=submit],
+.post-form input[type=submit],
+.change-form input[type=submit] {
+    width: 97%;
+    text-decoration: none;
+    background-color: #fff;
+    text-transform: uppercase;
+    padding: 12px 15px;
+    border: 1px solid #3d464d;
+    margin: 20px auto;
+    font-size: 1.143em;
+    cursor: pointer;
+}
+.edit-form input[type=submit] { width: 98%; }
+.login-form input[type=submit]:hover,
+.signup-form input[type=submit]:hover,
+.edit-form input[type=submit]:hover,
+.category-form input[type=submit]:hover,
+.topic-form input[type=submit]:hover,
+.post-form input[type=submit]:hover,
+.change-form input[type=submit]:hover {
+    background-color: rgba(11,207,4,1);
+    border: 1px solid #0BCF04;
+    color: #FFF;
+    transition: 0.3s;
 }
 
-.login-form {
-	margin-top: 90px;
-	background-color: rgba(255,255,255,0.3);
+/* Profile */
+
+.profile-form {
+	  background-color: rgba(0,0,0,0.1);
+    margin: 0 auto;
+    color: #000;
+    width: 50%;
+    max-width: 300px;
+    padding: 30px;
+    text-align: center;
+}
+.profile-form .about-user h2 { margin-bottom: 10px; text-decoration: underline; }
+.profile-form .about-user p { font-size: 1.2em; padding: 5px 0; }
+.profile-form .about-user a {
+		text-decoration: none;
+		text-transform: uppercase;
+		color: #000;
+		margin: 20px 0 0;
+		display: inline-block;
+		font-size: 0.8em;
+}
+.profile-form .about-user a:hover { color: #FF4900; }
+
+.edit-profile .edit-form h1 { margin-bottom: 20px; }
+.edit-profile .edit-form p {
+		text-align: left;
+		text-transform: uppercase;
+		font-size: 0.8em;
+		padding: 5px 0;
+}
+
+.change-password .change-form { margin: 0 auto; }
+
+/* Admin Categories */
+
+.main-container .categories-box .box-name {
+		text-decoration: underline;
+		margin-bottom: 20px;
+}
+.main-container .categories-box .add { margin: 20px 0; }
+.main-container .categories-box .add a {
+		text-decoration: none;
+		color: #000;
+		text-transform: uppercase;
+		font-size: 0.8em;
+		border: 1px solid #000;
+		border-radius: 3px;
+		padding: 8px 13px;
+}
+.main-container .categories-box .add a:hover { 
+		color: #FF4900; 
+		background-color: rgba(0,0,0,0.1);
+		border-color: #FF4900;
+}
+.main-container .styled { margin-top: 40px; width: 100%; }
+.main-container .styled thead tr { background-color: rgba(0,0,0,0.1); }
+.main-container .styled thead th { 
+		text-transform: uppercase;
+		font-size: 0.8em;
+		padding: 5px 0;
+}
+.main-container .styled tbody tr td {
+		padding: 6px 3px;
+		border: 1px solid #000;
+		width: 35%;
+}
+.main-container .styled tbody tr td a { color: #000; }
+.main-container .styled tbody tr td a:hover { color: #FF4900; }
+.main-container .styled tbody tr td:last-child { 
+		width: 30%;
+		text-align: center;
+}
+
+/* Categories & Topics */
+
+.category-box .box-name, .topic-box .box-name {
+		margin-bottom: 10px;
+		background-color: rgba(0,0,0,0.1);
+		padding: 5px 0;
+}
+.category-box .add,
+.topic-box p.topic-discribe { margin: 20px 0; padding-bottom: 20px; border-bottom: 1px solid #e5e5e5; }
+.category-box .add a {
+		text-decoration: none;
+		color: #000;
+		text-transform: uppercase;
+		font-size: 0.8em;
+		border: 1px solid #000;
+		border-radius: 3px;
+		padding: 8px 13px;
+}
+.category-box .add a:hover { 
+		color: #FF4900; 
+		background-color: rgba(0,0,0,0.1);
+		border-color: #FF4900;
+}
+.category-box .styled { margin-top: 40px; width: 100%; }
+.category-box .styled thead tr { background-color: rgba(0,0,0,0.1); }
+.category-box .styled thead th { 
+		text-transform: uppercase;
+		font-size: 0.8em;
+		padding: 5px 0;
+}
+.category-box .styled tbody tr td {
+		padding: 6px 3px;
+		border: 1px solid #000;
+		width: 35%;
+}
+.category-box .styled tbody tr td a { color: #000; }
+.category-box .styled tbody tr td a:hover { color: #FF4900; }
+.category-box .styled tbody tr td:last-child { 
+		width: 30%;
+		text-align: center;
+}
+.topic-box ul { padding: 20px 0; }
+.topic-box ul li {
+		background-color: rgba(0,0,0,0.1);
+		padding: 10px 20px;
+}
+.topic-box ul li a { color: #000; }
+
+/* Pagination */
+
+.topic-box .pagination, .category-box .pagination {
+  	text-align: center;
+  	padding: 1em;
+  	cursor: default;
+}
+.topic-box .pagination a, .category-box .pagination a, 
+.topic-box .pagination span, .category-box .pagination span { padding: 0.2em 0.3em; }
+.topic-box .pagination .disabled, .category-box .pagination .disabled { color: #aaaaaa; }
+.topic-box .pagination .current, .category-box .pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: #bebebe;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; 
+}
+.topic-box .pagination a, .category-box .pagination a { text-decoration: none; color: black; }
+.topic-box .pagination a:hover, .category-box .pagination a:hover,
+.topic-box .pagination a:focus, .category-box .pagination a:focus {
+     text-decoration: underline;
+     color: #FF4900;
 }

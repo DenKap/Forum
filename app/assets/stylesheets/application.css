@@ -59,24 +59,69 @@ h3 { font-size: 1.5em; }
 
 img { max-width: 100%; }
 
+.main-container {
+    margin-top: 100px;
+}
+
 /* Header */
 
 .header {
-    height: 90px;
+    background-color: #FFF;
+    height: 70px;
     position: fixed;
     z-index: 0;
     top: 0;
     width: 100%;
     border-bottom: 1px solid #e5e5e5;
 }
-.header .logo { float: left; margin-top: 20px; }
-.header .signup-login ul { text-align: right; margin-top: 20px; }
-.header .signup-login ul li { list-style: none; display: inline-block; }
-.header .signup-login ul li a { text-decoration: none; }
-.header .signup-login ul li a:hover { color: #FF4900; }
-.header .logged-header { display: inline-block; text-align: left; float: right; }
-.header .logged-header .who { display: inline-block; }
-.header .logged-header .logout { display: inline-block; }
+.header .logo { margin-top: 25px; text-decoration: none; display: inline-block; }
+.header .logo a { text-decoration: none; font-size: 1.6em; color: #000; }
+.header .signup-login, .logged-header { display: inline-block; margin-top: 25px; float: right }
+.header .signup-login ul li, .logged-header ul li { list-style: none; display: inline-block; }
+.header .signup-login ul li a, .logged-header ul li a { text-decoration: none; margin-left: 15px; color: #000; }
+.header .signup-login ul li a:hover, .logged-header ul li a:hover { color: #FF4900; }
+.header .logged-header .who { display: inline-block; color: #0BCF04; }
+.header .signup-login .signup,
+.header .signup-login .login,
+.header .logged-header .profile,
+.header .logged-header .logout {
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
 /* Footer */
 
-.footer { text-align: center; margin-top: 60px; }
+.footer { margin-top: 60px; border-top: 1px solid #e5e5e5; }
+.footer .contact { margin-top: 20px; display: inline-block; text-align: left; }
+.footer .contact p { margin-bottom: 5px; text-transform: uppercase; font-size: 0.8em; }
+.footer .contact a.email { text-decoration: none; color: #000; }
+.footer .copyrights { margin-top: 40px; display: inline-block; float: right; }
+
+/* Flash Messages */
+
+#notification {
+    position: absolute;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(11,207,4,0.6);
+    color: #FFF;
+    text-align: center;
+    line-height: 2;
+    overflow: hidden; 
+    -webkit-box-shadow: 0 0 5px black;
+    -moz-box-shadow:    0 0 5px black;
+    box-shadow:         0 0 5px black;
+}
+.hide { opacity: 0; }
+#notification .notice { background-color: rgba(11,207,4,0.6); }
+#notification .alert {background-color: #FF4900; }
+
+/* Error Messages */
+
+.errors {
+    color: #FF4900;
+    padding: 10px 0;
+    background-color: #e5e5e5;
+}

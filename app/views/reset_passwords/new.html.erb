@@ -1,0 +1,12 @@
+<div class="reset-form">
+	<div class="wrapper">
+
+		<h1>Please, enter your email</h1>
+
+			<%= form_tag reset_passwords_path %>
+			<p>Email</p>
+			<p><%=email_field_tag :email %></p>
+			<p><%=submit_tag "Send Request" %></p>
+
+	</div>
+</div>

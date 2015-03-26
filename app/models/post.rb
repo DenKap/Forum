@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
 
 	# validations
 
-	validates :title, :description, presence: true, length: { minimum: 2 }
+	validates :description, presence: true, length: { minimum: 2 }
 	validates :user_id, :topic_id, presence: true
 
 	# relations

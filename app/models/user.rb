@@ -5,12 +5,13 @@ class User < ActiveRecord::Base
 	before_save :encrypt_password
   after_create :set_registered_role
 
-  validates_presence_of :login, :email, :password
-  validates_length_of :login, :within => 2..30
-  validates_length_of :password, :within => 8..40
+  validates :login, :email, :password, presence: true
+  validates :login, length: { within: 2..30 }
+  validates :password, length: { within: 8..40 }
   validates_uniqueness_of :login, :email, case_sensitive: false
   validates :email, format: { with: /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/i }
-  
+  validates :new_password, length: { in: 8..40 }, allow_blank: true
+
   has_many :topics, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :user_roles, dependent: :destroy
@@ -31,6 +32,10 @@ class User < ActiveRecord::Base
     self.has_role?(Role.admin) || self == post.user
   end
 
+  def reset_password!
+    self.update({reset_password_token: Digest::SHA1.hexdigest("#{self.id}-#{self.email}-#{Time.now}"), reset_password_requested_at: Time.now })    
+  end
+
 	private
 
   def encrypt_password
@@ -44,8 +49,7 @@ class User < ActiveRecord::Base
   end
 
  	def self.authenticate(login, password)
-    User.find_by(login: login, password: Digest::SHA1.hexdigest(password)) rescue nil
+    User.where("(login = :login OR email = :login) AND password=:password", login: login, password: Digest::SHA1.hexdigest(password)).first rescue nil
   end
-
 
 end

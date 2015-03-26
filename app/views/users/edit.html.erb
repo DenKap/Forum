@@ -1,8 +1,15 @@
-<h1>Edit Profile</h1>
+<div class="edit-profile">
+	<div class="wrapper">
 
-<div class="add-form">
-  <%=form_for @user, url: user_path(@user) do |f| %>
-    <%= render partial: 'form', locals: { f: f } %>
-    <p class="submit"><%=f.submit 'Update Profile' %></p>
-  <% end %>
+		<div class="edit-form">
+			<h1>Edit Profile</h1>		
+		  <%=form_for @user, url: user_path(@user) do |f| %>
+		    <%= render partial: 'form', locals: { f: f } %>
+		    <p class="submit"><%=f.submit 'Update Profile' %></p>
+		  <% end %>
+
+		  <p class="change"><%=link_to "Change Password", change_password_path %></p>
+		</div>   
+
+	</div>
 </div>

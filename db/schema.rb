@@ -26,10 +26,11 @@ ActiveRecord::Schema.define(version: 20150311093832) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id",     limit: 4
-    t.integer "topic_id",    limit: 4
-    t.string  "title",       limit: 255
-    t.text    "description", limit: 65535
+    t.integer  "user_id",     limit: 4
+    t.integer  "topic_id",    limit: 4
+    t.text     "description", limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -56,15 +57,17 @@ ActiveRecord::Schema.define(version: 20150311093832) do
   add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.integer  "country",    limit: 4
-    t.string   "login",      limit: 255
-    t.string   "email",      limit: 255
-    t.string   "password",   limit: 255
-    t.string   "first_name", limit: 255
-    t.string   "last_name",  limit: 255
-    t.string   "city",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "country",                     limit: 4
+    t.string   "login",                       limit: 255
+    t.string   "email",                       limit: 255
+    t.string   "password",                    limit: 255
+    t.string   "first_name",                  limit: 255
+    t.string   "last_name",                   limit: 255
+    t.string   "city",                        limit: 255
+    t.string   "reset_password_token",        limit: 255
+    t.datetime "reset_password_requested_at"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
 end

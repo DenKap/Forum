@@ -1,0 +1,10 @@
+<div class="wrapper">
+	<% if flash.any? %>
+	  <div id="notification">
+	    <% flash.each do |key, msg| %>
+	      <%= content_tag :div, msg, class: [key.to_s], id: "notification" %>
+	    <% end %>
+	    <a id="close">[close]</a>
+	  </div>
+	<% end %>
+</div>

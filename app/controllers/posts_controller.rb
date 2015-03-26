@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 		@post = @topic.posts.new(post_params)
 		@post.user_id = @current_user.id
 		if @post.save
-			redirect_to category_topic_path(@topic.category, @topic), notice: "#{@post.title} has been added"
+			redirect_to category_topic_path(@topic.category, @topic), notice: "Your post has been added"
     else
       redirect_to category_topic_path(@topic.category, @topic), alert: "Please try again"
     end
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 
 	def update
 		if @post.update(post_params)
-			redirect_to category_topic_path(@topic.category, @topic), notice: "#{@post.title} has been updated successfully"
+			redirect_to category_topic_path(@topic.category, @topic), notice: "Your post has been updated successfully"
     else
       render :edit
     end		
@@ -28,9 +28,9 @@ class PostsController < ApplicationController
 
 	def destroy
 		if @post.destroy
-			redirect_to category_topic_path(@topic.category, @topic), notice: "#{@post.title} has been removed"
+			redirect_to category_topic_path(@topic.category, @topic), notice: "Your post has been removed"
     else
-      redirect_to category_topic_path(@topic.category, @topic), alert: "Couldn't remove #{@post.title}"
+      redirect_to category_topic_path(@topic.category, @topic), alert: "Couldn't remove this post"
     end
 	end
 
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :description, :user_id, :topic_id)
+		params.require(:post).permit(:description, :user_id, :topic_id)
 	end
 
 end
