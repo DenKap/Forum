@@ -8,11 +8,25 @@ class PostsController < ApplicationController
 	def create
 		@post = @topic.posts.new(post_params)
 		@post.user_id = @current_user.id
-		if @post.save
-			redirect_to category_topic_path(@topic.category, @topic), notice: "Your post has been added"
-    else
-      redirect_to category_topic_path(@topic.category, @topic), alert: "Please try again"
-    end
+
+		respond_to do |format|
+
+			format.html do
+				if @post.save
+					redirect_to category_topic_path(@topic.category, @topic), notice: "Your post has been added"
+		    else
+		      redirect_to category_topic_path(@topic.category, @topic), alert: "Please try again"
+		    end
+			end
+
+			format.js do
+				@post.save
+				render :save
+			end
+
+		end
+
+
 	end
 
 	def edit		
