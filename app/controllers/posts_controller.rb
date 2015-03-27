@@ -40,7 +40,11 @@ class PostsController < ApplicationController
 		@post = @topic.posts.find(params[:id])
     if @post.blank?
       redirect_to category_topic_path(@topic.category, @topic), alert: "Couldn't find this post"
-    end		
+ 		else
+ 			if @post.created_at < 2.hours.ago
+ 				redirect_to category_topic_path(@topic.category, @topic), alert: "You can't change post"
+ 			end	
+ 		end
 	end
 
 	def set_topic

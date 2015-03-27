@@ -25,11 +25,13 @@ class User < ActiveRecord::Base
   end
 
   def can_edit_topic?(topic)
+    raise 'Topic model required' unless topic.is_a?(Topic)
     self.has_role?(Role.admin) || self == topic.user
   end
 
   def can_edit_post?(post)
-    self.has_role?(Role.admin) || self == post.user
+    raise 'Post model required' unless post.is_a?(Post)
+    self.has_role?(Role.admin) || (self == post.user && post.created_at > 2.hours.ago)
   end
 
   def reset_password!
