@@ -1,9 +1,12 @@
 <div class="topic-box">
 	<div class="wrapper">
 
-		<h1 class="move-back"><%=link_to @category.name, category_path(@category) %></h1>
-		<h1 class="box-name"><%=@topic.title %></h1>
-		<p class="topic-discribe"><%=@topic.description %></p>
+		<div class="head">
+			<p class="move-back"><%=link_to @category.name, category_path(@category) %></p>
+			<p class="box-name"><%=@topic.title %></p>
+			<div class="user"><p>topic author</p><%=link_to @topic.user.login, user_path(@topic.user)%></div>		
+			<p class="topic-discribe"><%=@topic.description %></p>
+		</div>
 
 		<div id="posts">
 		<% if @posts.present? %>

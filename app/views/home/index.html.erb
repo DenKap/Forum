@@ -12,36 +12,47 @@
       	<% if @categories.present? %>
 
 	        <% @categories.each do |category| %>
-	          <div class="info">
-	            <div class="name"><span><%=link_to category.name, category_path(category) %></span></div>
-	            <div class="description"><span><%= category.description %></span></div>
-	          </div>
+		        <div class="category">
+		          <div class="info">
+		            <div class="name"><span><%=link_to category.name, category_path(category) %></span></div>
+		            <div class="description"><span><%= category.description %></span></div>
+		          </div>
+		        </div>
         	<% end %>
 
 				<% else %>
 	  			<p>There are no Categories yet</p>
 				<% end %>
+			</div>
+		</div>
+
+		<div class="updates">
+			<div class="wrapper">	
 
 				<p>Hot topics at our Forum: </p>
-
 					<% @last_topics.each do |topic| %>
-			      <ul>		        
-			        <li><%=link_to topic.title, topic.category %></li>
-			        <li><%=topic.description %></li>
-			        <li><%=link_to topic.user.login, user_path(topic.user) %></li>
-			      </ul>
-			    <% end %>
+				    <div class="topic-short">
+				     	<div class="info-left">        
+				    	  <div><span>Title: </span><%=link_to topic.title, topic.category %></div>
+				       	<div><span>Description: </span><%=topic.description %></div>
+				      </div>
+				      <div class="info-right">
+					      <div><span>Author: </span><%=link_to topic.user.login, user_path(topic.user) %></div>
+					      <div><span>Posts in Topic: </span><%= topic.posts.count %></div>
+				      </div>
+				    </div>
+				   <% end %>
 
 				<p>Last Users joined to our Forum: </p>
-
 					<% @last_users.each do |user| %>
-			      <ul>		        
-			        <li><%=user.login %></li>
-			      </ul>
-			    <% end %>
+				     <div class="last-users">		        
+				      <%=user.login %>
+				     </div>
+				   <% end %>
 
-    	</div>
-		</div>
+			</div>
+    </div>
+		
 
 	</div>
 </div>

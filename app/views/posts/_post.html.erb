@@ -1,8 +1,10 @@
-<ul>
-  <li class="username"><%=link_to post.user.login, user_path(post.user) %></li>
-  <li class="content"><%=post.description %></li>
-  <li class="add-date"><%=post.created_at.strftime("%d %b %y at %I:%M%p") %></li>
+<div class="posts">
+  <div class="username"><%=link_to post.user.login, user_path(post.user) %></div>
+  <div class="right-part">
+  	<div class="content"><%=post.description %></div>
+  	<div class="add-date"><%=post.created_at.strftime("%d %b %y at %I:%M%p") %></div>
   <% if @current_user.present? && @current_user.can_edit_post?(post)%>
-  	<li><%=link_to "edit", edit_topic_post_path(@topic, post)%> / <%=link_to "delete", topic_post_path(@topic, post), method: :delete, data: { confirm: "Do you want to delete your post?" }%></li>
+  	<div class="function"><%=link_to "edit", edit_topic_post_path(@topic, post)%> / <%=link_to "delete", topic_post_path(@topic, post), method: :delete, data: { confirm: "Do you want to delete your post?" }%></div>
   <% end %>
-</ul>
+  </div>
+</div>

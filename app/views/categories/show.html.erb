@@ -1,41 +1,38 @@
 <div class="category-box">
 	<div class="wrapper">
 		
-		<h1 class="move-back"><%=link_to 'Categories', root_path %></h1>
-		<h1 class="box-name"><%=@category.name %></h1>
-		<p><%=@category.description %></p>
-
-		<% if @current_user.present? %>
-			<p class="add"><%=link_to 'Add Topic', new_category_topic_path(@category) %></p>
-		<% end %>
+		<div class="head">
+			<p class="move-back">&larr;<%=link_to 'Categories', root_path %></p>
+			<p class="box-name"><%=@category.name %></p>
+			<p class="box-description"><%=@category.description %></p>
+			
+			<% if @current_user.present? %>
+				<p class="add"><%=link_to 'Add Topic', new_category_topic_path(@category) %></p>
+			<% end %>
+		</div>
 
 		<% if @topics.present? %>
-		  <table class="styled">
-		    <thead>
-		    <tr>		    	
-		      <th>Name</th>
-		      <th>Description</th>
-		      <th>Author</th>
-		      <th>Posts</th>
-		    </tr>
-		    </thead>
-		    <tbody>
+		  <div class="topic">
 		    <% @topics.each do |topic| %>
-		      <tr>		        
-		        <td><%=link_to topic.title, category_topic_path(@category, topic)%></td>
-		        <td><%=topic.description%></td>
-		        <td><%=link_to topic.user.login, user_path(topic.user)%></td>
-		        <td><%= topic.posts.count %></td>
+		      <div class="topics">
+		      	<div class="info-left">	        
+		        	<div class="title"><%=link_to topic.title, category_topic_path(@category, topic)%></div>
+		        	<div class="description"><%=topic.description%></div>
 		        <% if @current_user.present? && @current_user.can_edit_topic?(topic) %>
-		        	<td><%=link_to "edit", edit_category_topic_path(@category, topic)%> / <%=link_to "delete", category_topic_path(@category, topic), method: :delete, data: { confirm: "Do you want to delete #{topic.title}?" }%></td>
-		        <% end %>
-		      </tr>
+			        <div class="function"><%=link_to "edit", edit_category_topic_path(@category, topic)%> / <%=link_to "delete", category_topic_path(@category, topic), method: :delete, data: { confirm: "Do you want to delete #{topic.title}?" }%></div>
+			      <% end %>
+		        </div>
+		        <div class="info-right">		        	
+		        	<div class="user"><p>topic author</p>
+		        		<%=link_to topic.user.login, user_path(topic.user)%></div>							
+		        	<div class="count"><p>posts</p><%= topic.posts.count %></div>
+		        </div>
+		      </div>
 		    <% end %>
-		    </tbody>
-		  </table>
+		  </div>
 		  
 		<% else %>
-		  <p>There are no Topics here yet in <%=@category.name%></p>
+		  <p class="nothing">There are no Topics here yet in <%=@category.name%></p>
 		<% end %>
 
 		<span class="pagination"><%= will_paginate @topics %></span>
